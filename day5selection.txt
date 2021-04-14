@@ -1,0 +1,536 @@
+Ashutosh Mukhedkar
+
+## Sequence Practice Problem:
+
+Q1. Use Random function to get single digit.
+
+<<
+
+#! /bin/bash
+echo "$(( RANDOM % 10 ))"
+
+>>
+Output:
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash generaterandom.sh
+8
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash generaterandom.sh
+1
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash generaterandom.sh
+6
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash generaterandom.sh
+3
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash generaterandom.sh
+1
+
+
+***************************************************************************************************************************
+
+Q2. Use Random to get dice number between 1 to 6.
+
+<<
+
+echo "$(( RANDOM % 6 + 1 ))"
+
+>>
+Output:
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash dicenumber.sh
+4
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash dicenumber.sh
+1
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash dicenumber.sh
+2
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash dicenumber.sh
+3
+
+***************************************************************************************************************************
+
+Q3. Add two Random dice number and print.
+
+<<
+#! /bin/bash
+
+dice1=$((RANDOM%6))
+dice2=$((RANDOM%6))
+sum=$((dice1+dice2))
+echo "$sum"
+
+>>
+Output: 
+$ bash addrandomdice.sh
+1
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash addrandomdice.sh
+0
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash addrandomdice.sh
+6
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash addrandomdice.sh
+5
+
+***************************************************************************************************************************
+
+Q. Write a program that reads 5 random 2 digit values, Then find their sum and avg. 
+
+<<
+#! /bin/bash
+
+a=$((RANDOM % 100))
+
+b=$((RANDOM % 100))
+
+c=$((RANDOM % 100))
+
+d=$((RANDOM % 100))
+
+e=$((RANDOM % 100))
+
+sum=$((a + b + c + d + e))
+
+avg=$((sum/5))
+
+echo "Sum of 5 Random number: $sum"
+
+echo "Average: $avg"
+
+>>
+Output:
+
+Sum of 5 Random number: 276
+Average: 55
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash sumavgofrandom.sh
+Sum of 5 Random number: 242
+Average: 48
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash sumavgofrandom.sh
+Sum of 5 Random number: 322
+Average: 64
+
+***************************************************************************************************************************
+
+Q. Unit conversion:
+a) 1ft = 12in then 42in = ?ft
+
+feet=$(( $inch / 12 ))
+echo "FEET : $feet"
+
+b) Feet to meter
+meter=$(( feet * 0.308 ))
+
+c) feet to inch
+feet=40
+inch=$(( $feet * 12 ))
+echo "INCH: $inch"
+
+
+***************************************************************************************************************************
+
+## Selection practice problems:
+
+1. Check year leap or not.
+
+<<
+
+#! /bin/bash
+
+echo -n "Enter Year (YYYY): "
+read y
+
+if [ $((y % 4 )) -eq 0 ]
+then
+    echo " Leap Year"
+else
+    echo " Not a leap year "
+fi
+
+>>
+Output:
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash leapyear.sh
+Enter Year (YYYY): 2000
+ Leap Year
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash leapyear.sh
+Enter Year (YYYY): 1995
+ Not a leap year
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash leapyear.sh
+Enter Year (YYYY): 2020
+ Leap Year
+
+**************************************************************************************************************************
+
+Q2. Write a program to simulate a coin flip and print out HEADS or TAILS.
+
+<<
+
+#! /bin/bash
+
+check=$(( RANDOM % 2 ))
+Head=0
+Tail=1
+echo "$check"
+if [[ $check -eq $head ]]
+then
+     echo 'Head'
+else
+     echo 'Tail'
+fi
+
+>>
+Output:
+
+$ bash cointoss.sh
+0
+Head
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash cointoss.sh
+1
+Tail
+
+***************************************************************************************************************************
+
+Q. Write a program that reads 5 random values and find max and min value.
+
+<<
+#! /bin/bash
+
+r1=$(( RANDOM % 1000 ))
+r2=$(( RANDOM % 1000 ))
+r3=$(( RANDOM % 1000 ))
+r4=$(( RANDOM % 1000 ))
+r5=$(( RANDOM % 1000 ))
+
+
+if [ $r1 -gt $r2 ] && [ $r1 -gt $r3 ] && [ $r1 -gt $r4 ] && [ $r1 -gt $r5 ]
+then
+     echo "Max: $r1"
+elif [ $r2 -gt $r1 ] && [ $r2 -gt $r3 ] && [ $r2 -gt $r4 ] && [ $r2 -gt $r5 ]
+then
+     echo "Max: $r2"
+elif [ $r3 -gt $r1 ] && [ $r3 -gt $r2 ] && [ $r3 -gt $r4 ] && [ $r3 -gt $r5 ]
+then
+     echo "Max: $r3"
+elif [ $r4 -gt $r1 ] && [ $r4 -gt $r2 ] && [ $r4 -gt $r3 ] && [ $r4 -gt $r5 ]
+then
+     echo "Max: $r4"
+
+else
+     echo "Max: $r5"
+fi
+
+if [ $r1 -lt $r2 ] && [ $r1 -lt $r3 ] && [ $r1 -lt $r4 ] && [ $r1 -lt $r5 ]
+then
+     echo "Min: $r1"
+elif [ $r2 -lt $r1 ] && [ $r2 -lt $r3 ] && [ $r2 -lt $r4 ] && [ $r2 -lt $r5 ]
+then
+     echo "Min: $r2"
+elif [ $r3 -lt $r1 ] && [ $r3 -lt $r2 ] && [ $r3 -lt $r4 ] && [ $r3 -lt $r5 ]
+then
+     echo "Min: $r3"
+elif [ $r4 -lt $r1 ] && [ $r4 -lt $r2 ] && [ $r4 -lt $r3 ] && [ $r4 -lt $r5 ]
+then
+     echo "Min: $r4"
+
+else
+     echo "Min: $r5"
+fi
+
+>>
+Output:
+
+$ bash maxmin.sh
+Max: 593
+Min: 265
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash maxmin.sh
+Max: 958
+Min: 131
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash maxmin.sh
+Max: 534
+Min: 276
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash maxmin.sh
+Max: 795
+Min: 232
+
+
+************************************************************************************************************************************************************************
+
+Selection Practice Problem With if, elif and else.
+
+Q1. Read a single digit number and write in a word.
+
+<<
+#! /bin/bash
+
+num=$(( RANDOM % 10 ))
+
+if [ $num -eq 0 ]
+then
+    echo "ZERO"
+elif [ $num -eq 1 ]
+then
+    echo "ONE"
+elif [ $num -eq 2 ]
+then
+    echo "TWO"
+elif [ $num -eq 3 ]
+then
+    echo "THREE"
+elif [ $num -eq 4 ]
+then
+    echo "FOUR"
+elif [ $num -eq 5 ]
+then
+    echo "FIVE"
+elif [ $num -eq 6 ]
+then
+    echo "SIX"
+elif [ $num -eq 7 ]
+then
+    echo "SEVEN"
+elif [ $num -eq 8 ]
+then
+    echo "EIGHT"
+else
+    echo "NINE"
+fi
+
+>>
+Output:
+
+$ bash numtoword
+THREE
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash numtoword
+EIGHT
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash numtoword
+SIX
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash numtoword
+FIVE
+
+**********************************************************************************************************************************************************************
+
+Q2. Read a number and display the week day.
+
+<<
+#! /bin/bash
+
+echo " Enter valid number between 1 to 7 for week days: "
+read num
+if [ $num -eq 1 ]
+then
+    echo "SUNDAY"
+elif [ $num -eq 2 ]
+then
+    echo "MONDAY"
+elif [ $num -eq 3 ]
+then
+    echo "TUESDAY"
+elif [ $num -eq 4 ]
+then
+    echo "WEDNESDAY"
+elif [ $num -eq 5 ]
+then
+    echo "THURSDAY"
+elif [ $num -eq 6 ]
+then
+    echo "FRIDAY"
+elif [ $num -eq 7 ]
+then
+    echo "SATURDAY"
+else
+    echo "Please print a valid numbers between 1 to 7"
+fi
+
+>>
+Output:
+
+$ bash weekdisplay.sh
+ Enter valid number between 1 to 7 for week days:
+4
+WEDNESDAY
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash weekdisplay.sh
+ Enter valid number between 1 to 7 for week days:
+5
+THURSDAY
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash weekdisplay.sh
+ Enter valid number between 1 to 7 for week days:
+7
+SATURDAY
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash weekdisplay.sh
+ Enter valid number between 1 to 7 for week days:
+9
+Please print a valid numbers between 1 to 7
+
+***********************************************************************************************************************************************************************
+
+Q. Enter 3 numbers do following arithematic operations.
+1. a+b*c 2. a%b+c 3. c+a/b 4. a*b+c  
+
+<<
+# /bin/bash
+
+a=5
+b=6
+c=7
+
+res1=$(( $a + $b * $c ))
+res2=$(( $a % $b + $c ))
+res3=$(( $c + $a / $b ))
+res4=$(( $a * $b + $c ))
+
+if [ $res1 -gt $res2 ] && [ $res1 -gt $res3 ] && [ $res1 -gt $res4 ]
+then
+    echo "MAX: $res1"
+elif [ $res2 -gt $res1 ] && [ $res2 -gt $res3 ] && [ $res2 -gt $res4 ]
+then
+    echo "MAX: $res2"
+elif [ $res3 -gt $res1 ] && [ $res3 -gt $res2 ] && [ $res3 -gt $res4 ]
+then
+    echo "MAX: $res3"
+else
+    echo "MAX: $res4"
+fi
+
+>>
+Output:
+$ bash arithmatic.sh
+MAX: 47
+
+***********************************************************************************************************************************************************************
+
+Q. 
+inch = 12* feet
+
+
+
+
+
+***********************************************************************************************************************************************************************
+
+Selection problem practice with switch case statement
+
+Q. Read a number and display the week day
+
+<<
+#! /bin/bash
+
+echo " Enter valid number between 1 to 7 for week days: "
+read num
+
+case $num in
+            1) echo "SUNDAY" ;;
+            2) echo "MONDAY" ;;
+            3) echo "TUESDAY" ;;
+            4) echo "WEDNESDAY" ;;
+            5) echo "THURSDAY" ;;
+            6) echo "FRIDAY" ;;
+            7) echo "SATURDAY" ;;
+            *) echo "Please enter a valid number between 1 to 7" ;;
+esac
+
+>>
+Output:
+$ bash numtowordcase.sh
+ Enter valid number between 1 to 7 for week days:
+5
+THURSDAY
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash numtowordcase.sh
+ Enter valid number between 1 to 7 for week days:
+7
+SATURDAY
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash numtowordcase.sh
+ Enter valid number between 1 to 7 for week days:
+1
+SUNDAY
+
+***********************************************************************************************************************************************************************
+
+Q.  Read a single digit number and write in a word.
+
+<<
+#! /bin/bash
+
+num=$(( RANDOM % 10 ))
+
+case $num in
+            1) echo "one" ;;
+            2) echo "two" ;;
+            3) echo "three" ;;
+            4) echo "four" ;;
+            5) echo "five" ;;
+            6) echo "six" ;;
+            7) echo "seven" ;;
+            8) echo "eight" ;;
+            9) echo "nine" ;;
+            *) echo "Value is invalid greater than 10 is two digit, Please enter between 1 to 9" ;;
+esac
+
+>>
+Output:
+$ bash numtowordcase.sh
+eight
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash numtowordcase.sh
+five
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash numtowordcase.sh
+Value is invalid greater than 10 is two digit, Please enter between 1 to 9
+
+mukhe@DESKTOP-RL8ITQ8 MINGW64 ~/Desktop/test
+$ bash numtowordcase.sh
+eight
+
+***********************************************************************************************************************************************************************
+ 
